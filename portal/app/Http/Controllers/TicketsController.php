@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use ultracart\v2\api\OrderApi;
 use ultracart\v2\Configuration;
+use ultracart\v2\HeaderSelector;
 class TicketsController extends Controller
 {
     /**
@@ -23,21 +24,17 @@ class TicketsController extends Controller
 
     public function ucApiGetOrder($oder_id){
 
-      //  include(app_path() . '/CustomLib/ultracartApi/autoload.php');
 
-        // Configure OAuth2 access token for authorization: ultraCartOauth
-       // ultracart\v2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-        // Configure API key authorization: ultraCartSimpleApiKey
-         Configuration::getDefaultConfiguration()->setApiKey('x-ultracart-simple-key', '7ef3b2f9383b97017062fdbf152ddc0077acb5a7ab376c017062fdbf152ddc00');
-        // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-        // ultracart\v2\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-ultracart-simple-key', 'Bearer');
+        Configuration::getDefaultConfiguration()->setApiKey('x-ultracart-simple-key', 'env("UC_SIMPLE_KEY")');
+        $config = Configuration::getDefaultConfiguration();
+        $headerSelector = new HeaderSelector(/* leave null for version tied to this sdk version */);
 
-        $api_instance = new OrderApi(new Client());
-        $order_id = "RDK-202002200711-499644	"; // string | The order id to retrieve.
-        $_expand = "customer_profile"; // string | The object expansion to perform on the result.  See documentation for examples
+        $api_instance = new OrderApi(new Client(), $config, $headerSelector);
+        $orderToGet = $oder_id ? $oder_id : "RDK-202002200711-499644"; // string | The order id to retrieve.
+        $_expand = "checkout,coupon,customer_profile"; // string | The object expansion to perform on the result.  See documentation for
 
         try {
-            $result = $api_instance->getOrder($order_id, $_expand);
+            $result = $api_instance->getOrder($orderToGet, $_expand);
             echo "<pre>";
             print_r($result);
         } catch (Exception $e) {
