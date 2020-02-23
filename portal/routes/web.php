@@ -22,6 +22,8 @@ Route::get('hey/{name}', function ($name){
 
 Route::get('/postback/orders/{order_id?}', 'TicketsController@ucApiGetOrder');
 
+Route::get('/zendesk/user/{user_email?}', 'TicketsController@findZendeskTicketByEmail');
+
 
 Auth::routes();
 
