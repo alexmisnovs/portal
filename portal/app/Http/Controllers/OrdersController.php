@@ -32,6 +32,7 @@ class OrdersController extends Controller
      */
     public function fetchOrderFromUC(Request $request){
 
+        dd('got here');
         Configuration::getDefaultConfiguration()->setApiKey('x-ultracart-simple-key', env('UC_SIMPLE_KEY'));
         $config = Configuration::getDefaultConfiguration();
         $headerSelector = new HeaderSelector(/* leave null for version tied to this sdk version */);
