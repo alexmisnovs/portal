@@ -13,7 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                        <form action="/orders/postaback" method="post">
+                        <form action="/orders/fetchOrderFromUC" method="post">
                             @csrf
                             <input type="text" name="order_id" id="order_id">
 
