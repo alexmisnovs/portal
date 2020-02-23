@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use Huddle\Zendesk\Facades\Zendesk;
 use Illuminate\Http\Request;
 //use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Client;
 use ultracart\v2\api\OrderApi;
 use ultracart\v2\Configuration;
 use ultracart\v2\HeaderSelector;
+
+
 class TicketsController extends Controller
 {
     /**
@@ -22,6 +25,34 @@ class TicketsController extends Controller
        // dd($oder_id);
     }
 
+    public function findZendeskTicketByEmail($customer_email){
+        // Get all tickets
+        //first find customer by email. https://rdkglobal.zendesk.com/api/v2/users/search.json?query=email:singhanita41@yahoo.com
+        $params = array('query' => $customer_email);
+        $search =  Zendesk::users()->search($params);
+
+        if (empty($search->users)) {
+            echo 'This email adress could not be found on Zendesk.';
+        } else {
+            foreach ($search->users as $UserData) {
+                echo "<pre>";
+                print_r($UserData);
+                echo "</pre>";
+            }
+        }
+       // Zendesk::tickets()->users($requesterId)->tickets()->requested();
+    }
+
+    public function createTicket(){
+
+        Zendesk::tickets()->create([
+            'subject' => 'Alex ticket',
+            'comment' => [
+                'body' => 'API ticket test.'
+            ],
+            'priority' => 'normal'
+        ]);
+    }
     public function ucApiGetOrder($oder_id){
 
 
