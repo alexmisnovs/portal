@@ -21,7 +21,7 @@
 
                         </form>
                    Listing orders:
-                    @if($data):
+                    @if($data ?? ''):
                             <?php dd($data) ?>
                         @else:
                         <div>Please enter order id above</div>
