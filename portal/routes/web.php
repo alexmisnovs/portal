@@ -18,5 +18,11 @@ Route::get('/', function () {
 Route::get('hey/{name}', function ($name){
     return "Hello ". $name;
 });
+
+
 Route::get('/postback/orders/{order_id?}', 'TicketsController@ucApiGetOrder');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
