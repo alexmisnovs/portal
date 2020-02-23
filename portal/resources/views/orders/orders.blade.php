@@ -14,13 +14,14 @@
                         </div>
                     @endif
 
-                        {{ Form::open(array('action' => 'OrdersController@fetchOrderFromUC')) }}
+
+                        <form action="{{route('get-order')}}" method="POST">
                             @csrf
                             <input type="text" name="order_id" id="order_id">
 
                             <input type="submit" value="Get Order Details">
 
-                        {{ Form::close() }}
+                        </form>
                    Listing orders:
                     @if($data ?? ''):
                             <?php dd($data) ?>
