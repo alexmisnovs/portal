@@ -13,13 +13,14 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                        <form action="/orders/fetchOrderFromUC" method="post">
+
+                        {{ Form::open(array('action' => 'OrdersController@fetchOrderFromUC')) }}
                             @csrf
                             <input type="text" name="order_id" id="order_id">
 
                             <input type="submit" value="Get Order Details">
 
-                        </form>
+                        {{ Form::close() }}
                    Listing orders:
                     @if($data ?? ''):
                             <?php dd($data) ?>
