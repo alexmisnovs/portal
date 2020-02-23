@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 //use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Client;
 use ultracart\v2\api\OrderApi;
-
+use ultracart\v2\Configuration;
 class TicketsController extends Controller
 {
     /**
@@ -28,7 +28,7 @@ class TicketsController extends Controller
         // Configure OAuth2 access token for authorization: ultraCartOauth
        // ultracart\v2\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
         // Configure API key authorization: ultraCartSimpleApiKey
-        ultracart\v2\Configuration::getDefaultConfiguration()->setApiKey('x-ultracart-simple-key', '7ef3b2f9383b97017062fdbf152ddc0077acb5a7ab376c017062fdbf152ddc00');
+         Configuration::getDefaultConfiguration()->setApiKey('x-ultracart-simple-key', '7ef3b2f9383b97017062fdbf152ddc0077acb5a7ab376c017062fdbf152ddc00');
         // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
         // ultracart\v2\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-ultracart-simple-key', 'Bearer');
 
