@@ -25,7 +25,7 @@ class TicketsController extends Controller
     public function ucApiGetOrder($oder_id){
 
 
-        Configuration::getDefaultConfiguration()->setApiKey('x-ultracart-simple-key', 'env("UC_SIMPLE_KEY")');
+        Configuration::getDefaultConfiguration()->setApiKey('x-ultracart-simple-key', env('UC_SIMPLE_KEY'));
         $config = Configuration::getDefaultConfiguration();
         $headerSelector = new HeaderSelector(/* leave null for version tied to this sdk version */);
 
