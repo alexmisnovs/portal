@@ -28,3 +28,5 @@ Route::get('/zendesk/user/{user_email?}', 'TicketsController@findZendeskTicketBy
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/orders', 'OrdersController@index')->name('orders');
+Route::post('/orders/get-uc-order', 'OrdersController@fetchOrderFromUC');

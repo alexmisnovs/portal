@@ -4,11 +4,7 @@ namespace App\Http\Controllers;
 
 use Huddle\Zendesk\Facades\Zendesk;
 use Illuminate\Http\Request;
-//use GuzzleHttp\Exception\GuzzleException;
-use GuzzleHttp\Client;
-use ultracart\v2\api\OrderApi;
-use ultracart\v2\Configuration;
-use ultracart\v2\HeaderSelector;
+
 
 
 class TicketsController extends Controller
@@ -52,25 +48,6 @@ class TicketsController extends Controller
             ],
             'priority' => 'normal'
         ]);
-    }
-    public function ucApiGetOrder($oder_id){
-
-
-        Configuration::getDefaultConfiguration()->setApiKey('x-ultracart-simple-key', env('UC_SIMPLE_KEY'));
-        $config = Configuration::getDefaultConfiguration();
-        $headerSelector = new HeaderSelector(/* leave null for version tied to this sdk version */);
-
-        $api_instance = new OrderApi(new Client(), $config, $headerSelector);
-        $orderToGet = $oder_id ? $oder_id : "RDK-202002200711-499644"; // string | The order id to retrieve.
-        $_expand = "checkout,coupon,customer_profile"; // string | The object expansion to perform on the result.  See documentation for
-
-        try {
-            $result = $api_instance->getOrder($orderToGet, $_expand);
-            echo "<pre>";
-            print_r($result);
-        } catch (Exception $e) {
-            echo 'Exception when calling OrderApi->getOrder: ', $e->getMessage(), PHP_EOL;
-        }
     }
 
     /**
