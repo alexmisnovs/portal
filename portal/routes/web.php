@@ -15,5 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('hello/{name}', function ($name){
+    return "hello ". $name;
+});
 Route::get('/postback/orders/{order_id?}', 'TicketsController@ucApiGetOrder');
 
