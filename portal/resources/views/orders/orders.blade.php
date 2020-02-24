@@ -25,8 +25,9 @@
                         @error('api')
                         <span>{{ $message }}</span>
                         @enderror
-                   Listing orders:
+
                     @if($data ?? ''):
+                        Listing orders:
                             <?php echo "<pre>";print_r($data)  ?>
 
                         @else:
