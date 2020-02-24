@@ -23,7 +23,7 @@ class OrdersController extends Controller
     public function index($data = [])
     {
         //
-        if(count($data > 0)){
+        if(count($data) > 0){
             return view('orders.orders')->with('data', $data);
         }
         else{
