@@ -19,7 +19,7 @@
                             @csrf
                             <input type="text" name="order_id" id="order_id">
 
-                            <input type="submit" value="Get Order Details">
+                            <input type="submit" value="Get Affiliate Details">
 
                         </form>
                         @error('api')
