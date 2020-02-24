@@ -27,7 +27,7 @@
                         @enderror
 
                         @if($data ?? '')
-                        Listing order details:
+                            Listing order details: </br>
                             <?php
 //                                echo "<pre>";print_r($data)
                             ?>
