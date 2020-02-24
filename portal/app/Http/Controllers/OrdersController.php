@@ -45,11 +45,13 @@ class OrdersController extends Controller
             $result = $api_instance->getOrder($orderToGet, $_expand);
 //            echo "<pre>";
 //            print_r($result);
-            return view('orders.orders')->with('data', $result);
+
         } catch (Exception $e) {
-            echo "Something is wrong"; exit();
-            //echo 'Exception when calling OrderApi->getOrder: ', $e->getMessage(), PHP_EOL;
+           //dd($e);
+            echo 'Exception when calling OrderApi->getOrder: ', $e->getMessage(), PHP_EOL;
         }
+        return view('orders.orders')->with('data', $result);
+
     }
     public function fetchUCOrder($order_id){
 
