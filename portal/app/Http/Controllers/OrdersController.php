@@ -42,15 +42,19 @@ class OrdersController extends Controller
         $_expand = "checkout,coupon,customer_profile"; // string | The object expansion to perform on the result.  See documentation for
 
         try {
-            $result = $api_instance->getOrder($orderToGet, $_expand);
+            if($result = $api_instance->getOrder($orderToGet, $_expand)){
+                return view('orders.orders')->with('data', $result);
+            }
 //            echo "<pre>";
 //            print_r($result);
+            else{
+                dd("something is wrong with Api call");
+            }
 
         } catch (Exception $e) {
            //dd($e);
             echo 'Exception when calling OrderApi->getOrder: ', $e->getMessage(), PHP_EOL;
         }
-        return view('orders.orders')->with('data', $result);
 
     }
     public function fetchUCOrder($order_id){
