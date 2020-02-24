@@ -30,7 +30,7 @@
                         Listing orders:
                             <?php echo "<pre>";print_r($data)  ?>
 
-                        @else:
+                        @else
                         <div>Please enter order id above</div>
                         @endif
                 </div>
