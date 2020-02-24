@@ -28,7 +28,7 @@
 
                         @else:
                         <div>Please enter order id above</div>
-                        @endif;
+                        @endif
                 </div>
             </div>
         </div>
