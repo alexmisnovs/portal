@@ -29,7 +29,12 @@
                         @if($data ?? '')
                         Listing order details:
                             <?php echo "<pre>";print_r($data)  ?>
-                            {{ $data['order']['checkout']['custom_field3'] }}
+                            Affiliate details:
+                            Network: {{ $data['order']['checkout']['custom_field7'] }} </br>
+                            Campaign: {{ $data['order']['checkout']['custom_field2'] }} </br>
+                            Affiliate Id: {{ $data['order']['checkout']['custom_field3'] }} </br>
+                            Click Id: {{ $data['order']['checkout']['custom_field4'] }}
+
                         @else
                         <div>Please enter order id above</div>
                         @endif
