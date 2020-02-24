@@ -20,15 +20,12 @@ class OrdersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($data = [])
+    public function index()
     {
         //
-        if(count($data) > 0){
-            return view('orders.orders')->with('data', $data);
-        }
-        else{
+
             return view('orders.orders');
-        }
+
 
     }
 
@@ -51,7 +48,6 @@ class OrdersController extends Controller
         try {
             $result = $api_instance->getOrder($orderToGet, $_expand);
 
-
 //            echo "<pre>";
 //            print_r($result);
 
@@ -68,9 +64,9 @@ class OrdersController extends Controller
             }
 
         }
-        redirect()->action('OrdersController@index', ['data' => $result]);
+        //redirect()->action('OrdersController@index', ['data' => $result]);
 
-        //return view('orders.orders')->with('data', $result);
+        return view('orders.orders')->with('data', $result);
 
     }
     public function fetchUCOrder($order_id){
