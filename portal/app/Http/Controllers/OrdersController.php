@@ -7,6 +7,7 @@ use GuzzleHttp\Client;
 use ultracart\v2\api\OrderApi;
 use ultracart\v2\Configuration;
 use ultracart\v2\HeaderSelector;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class OrdersController extends Controller
 {
@@ -42,19 +43,18 @@ class OrdersController extends Controller
         $_expand = "checkout,coupon,customer_profile"; // string | The object expansion to perform on the result.  See documentation for
 
         try {
-            if($result = $api_instance->getOrder($orderToGet, $_expand)){
-                return view('orders.orders')->with('data', $result);
-            }
+            $result = $api_instance->getOrder($orderToGet, $_expand);
+
+
 //            echo "<pre>";
 //            print_r($result);
-            else{
-                dd("something is wrong with Api call");
-            }
 
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
            //dd($e);
-            echo 'Exception when calling OrderApi->getOrder: ', $e->getMessage(), PHP_EOL;
+            throw new HttpException(500, $e->getMessage());
+           // echo 'Exception when calling OrderApi->getOrder: ', $e->getMessage(), PHP_EOL;
         }
+        return view('orders.orders')->with('data', $result);
 
     }
     public function fetchUCOrder($order_id){
