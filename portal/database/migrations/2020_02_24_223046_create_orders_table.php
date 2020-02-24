@@ -18,8 +18,9 @@ class CreateOrdersTable extends Migration
             $table->string('uc_order_id')->nullable();
             $table->string('customer_name')->nullable();
             $table->string('customer_email')->nullable();
+            $table->string('product')->nullable();
             $table->string('action');
-            $table->date('order_date');
+            $table->date('order_date')->nullable();
             $table->text('description')->nullable();
             $table->timestamps();
         });
