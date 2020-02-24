@@ -17,9 +17,11 @@
                         <div>
                             <form>
                                 <div class="form-group">
-                                    <label for="uc_order_id">Ultracart Order Id</label>
-                                    <input type="text" class="form-control" name="uc_order_id" id="uc_order_id" placeholder="RDK-123xx">
-                                </div>
+
+                                            <label for="uc_order_id">Ultracart Order Id</label>
+                                            <input type="text" class="form-control" name="uc_order_id" id="uc_order_id" placeholder="RDK-123xx">
+                                            <button type="submit" class="btn btn-primary mt-2">Fetch From UC</button>
+                                   </div>
                                 <div class="form-group">
                                     <label for="product">Product</label>
                                     <input type="text" class="form-control" name="product" id="product" placeholder="Boobie Cream">
