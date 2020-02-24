@@ -28,7 +28,9 @@
 
                         @if($data ?? '')
                         Listing order details:
-                            <?php echo "<pre>";print_r($data)  ?>
+                            <?php
+//                                echo "<pre>";print_r($data)
+                            ?>
                             Affiliate details:
                             Network: {{ $data['order']['checkout']['custom_field7'] }} </br>
                             Campaign: {{ $data['order']['checkout']['custom_field2'] }} </br>
