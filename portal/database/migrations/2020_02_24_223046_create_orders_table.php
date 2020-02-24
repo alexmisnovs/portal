@@ -24,7 +24,6 @@ class CreateOrdersTable extends Migration
             $table->text('description')->nullable();
 
             // affiliate network related fields
-            $table->json('affiliate_details');
             $table->timestamps();
         });
     }
