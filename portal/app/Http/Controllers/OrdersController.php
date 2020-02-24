@@ -51,7 +51,8 @@ class OrdersController extends Controller
 
         } catch (\Exception $e) {
            //dd($e);
-            throw new HttpException(404, $e->getMessage());
+            return response()->json(['error' => $e->getMessage()], 500);
+            //throw new HttpException(404, $e->getMessage());
            // echo 'Exception when calling OrderApi->getOrder: ', $e->getMessage(), PHP_EOL;
         }
         return view('orders.orders')->with('data', $result);
