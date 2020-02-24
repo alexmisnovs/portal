@@ -24,9 +24,7 @@
                         </form>
                    Listing orders:
                     @if($data ?? ''):
-                            <?php
-                        echo "<pre>";print_r($data) ;
-                            ?>
+                            <?php echo "<pre>";print_r($data)  ?>
 
                         @else:
                         <div>Please enter order id above</div>
