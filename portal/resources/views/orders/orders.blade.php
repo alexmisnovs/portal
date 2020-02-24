@@ -26,8 +26,8 @@
                         <span>{{ $message }}</span>
                         @enderror
 
-                    @if($data ?? '')
-                        Listing orders:
+                        @if($data ?? '')
+                        Listing order details:
                             <?php echo "<pre>";print_r($data)  ?>
 
                         @else

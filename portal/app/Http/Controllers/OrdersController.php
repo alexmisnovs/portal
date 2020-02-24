@@ -20,16 +20,22 @@ class OrdersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($data = [])
     {
         //
-        return view('orders.orders');
+        if(count($data > 0)){
+            return view('orders.orders')->with('data', $data);
+        }
+        else{
+            return view('orders.orders');
+        }
+
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function fetchOrderFromUC(Request $request){
 
@@ -62,7 +68,9 @@ class OrdersController extends Controller
             }
 
         }
-        return view('orders.orders')->with('data', $result);
+        redirect()->action('OrdersController@index', ['data' => $result]);
+
+        //return view('orders.orders')->with('data', $result);
 
     }
     public function fetchUCOrder($order_id){
