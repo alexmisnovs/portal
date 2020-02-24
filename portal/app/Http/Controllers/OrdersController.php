@@ -50,10 +50,17 @@ class OrdersController extends Controller
 //            print_r($result);
 
         } catch (\Exception $e) {
-           //dd($e);
-            return response()->json(['error' => $e->getMessage()], 500);
-            //throw new HttpException(404, $e->getMessage());
-           // echo 'Exception when calling OrderApi->getOrder: ', $e->getMessage(), PHP_EOL;
+
+            if(strstr($e->getMessage(), 'does not exist')){
+                return Redirect::back()->withErrors(['error' => 'Order not found']);
+
+                //return response()->json(['error' => $e->getMessage()], 500);
+              //  echo "Order not found: " . $e->getCode();;
+            }
+            else{
+                throw new HttpException(404, $e->getMessage());
+            }
+            
         }
         return view('orders.orders')->with('data', $result);
 
