@@ -52,7 +52,7 @@ class OrdersController extends Controller
         } catch (\Exception $e) {
 
             if(strstr($e->getMessage(), 'does not exist')){
-                return redirect()->back()->withErrors(['error' => 'Order not found']);
+                return redirect()->back()->withErrors(['api' => 'Order not found']);
 
                 //return response()->json(['error' => $e->getMessage()], 500);
               //  echo "Order not found: " . $e->getCode();;

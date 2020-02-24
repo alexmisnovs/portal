@@ -22,6 +22,9 @@
                             <input type="submit" value="Get Order Details">
 
                         </form>
+                        @error('api')
+                        <span>{{ $message }}</span>
+                        @enderror
                    Listing orders:
                     @if($data ?? ''):
                             <?php echo "<pre>";print_r($data)  ?>
