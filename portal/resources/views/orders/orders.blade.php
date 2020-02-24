@@ -8,12 +8,12 @@
                 <div class="card-header">Orders</div>
 
                 <div class="card-body">
+
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
                     @endif
-
 
                         <form action="{{route('get-order')}}" method="POST">
                             @csrf
@@ -29,7 +29,7 @@
                         @if($data ?? '')
                         Listing order details:
                             <?php echo "<pre>";print_r($data)  ?>
-
+                            {{ $data['order']['checkout']['custom_field3'] }}
                         @else
                         <div>Please enter order id above</div>
                         @endif
