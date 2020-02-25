@@ -66,7 +66,7 @@
                         </div>
                     </form>
                     @if($result ?? '')
-                        <?php dd($result); ?>
+                        <?php print_r($result); ?>
                     <div> Result</div>
                         @endif
                 </div>

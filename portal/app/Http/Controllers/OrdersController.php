@@ -116,12 +116,13 @@ class OrdersController extends Controller
             }
 
         }
-     //   redirect()->action('OrdersController@index', ['data' => $result]);
+        return view('orders.orders')->with('result', $result);
+
 
 //        $input = $request->all();
 //        $order = Order::create($input);
 
-        return view('orders.orders', compact($result));
+//        return view('orders.orders', compact($result));
     }
 
     public function create()
