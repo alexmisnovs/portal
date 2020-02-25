@@ -29,7 +29,7 @@
                         @if($data ?? '')
                             Listing order details: </br>
                             <?php
-//                                echo "<pre>";print_r($data)
+//                                echo "<pre>";print_r($result)
                             ?>
                             Affiliate details:
                             Network: {{ $data['order']['checkout']['custom_field7'] }} </br>
@@ -69,15 +69,18 @@
                             <?php echo "<pre>" ;print_r($result); ?>
                          <div> Customer Details:</div>
                             <ul>
-                                <li>Email: {{ $data['order']['customer_profile']['email'] }}</li>
-                                <li>Name: {{ $data['order']['customer_profile']['email'] }}</li>
+                                <li>Email: {{ $result['order']['customer_profile']['email'] }}</li>
+                                <li>Name: {{ $result['order']['customer_profile']['email'] }}</li>
+                            </ul>
+                            <ul>
+                                <li>Product: {{ $result['order']['customer_profile']['email'] }}</li>
                             </ul>
                         <div>
                             Affiliate details:
-                            Network: {{ $data['order']['checkout']['custom_field7'] }} </br>
-                            Campaign: {{ $data['order']['checkout']['custom_field2'] }} </br>
-                            Affiliate Id: {{ $data['order']['checkout']['custom_field3'] }} </br>
-                            Click Id: {{ $data['order']['checkout']['custom_field4'] }}
+                            Network: {{ $result['order']['checkout']['custom_field7'] }} </br>
+                            Campaign: {{ $result['order']['checkout']['custom_field2'] }} </br>
+                            Affiliate Id: {{ $result['order']['checkout']['custom_field3'] }} </br>
+                            Click Id: {{ $result['order']['checkout']['custom_field4'] }}
                         </div>
                     @endif
                 </div>
