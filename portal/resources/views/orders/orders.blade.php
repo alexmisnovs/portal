@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
- 
+
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Generate Hold Order from UC</div>
@@ -28,20 +28,18 @@
                     </form>
                     @if($result ?? '')
                             <?php
-//                                echo "<pre>" ;print_r($result);
+                                echo "<pre>" ;print_r($result);
                                 ?>
                          <div> Customer Details:</div>
                             <ul>
+                                <li>Name: {{ $result['order']['shipping']['title'] }} {{ $result['order']['shipping']['first_name'] }} {{ $result['order']['shipping']['last_name'] }}</li>
                                 <li>Email: {{ $result['order']['customer_profile']['email'] }}</li>
-                                <li>Name: {{ $result['order']['shipping']['title'] }} {{ $result['order']['shipping']['first_name'] }} {{ $result['order']['shipping']['last_name'] }}
-                                </li>
                             </ul>
                             <ul>
                                 <li>Date Created:  {{ $result['order']['creation_dts'] }}</li>
                                 <li>Product: {{ $result['order']['items'][0]['accounting_code'] }}</li>
                                 <li>Total: {{ $result['order']['summary']['total']['value'] }}</li>
                                 <li>Fraud Score:  {{ $result['order']['fraud_score']['score'] }}</li>
-
                             </ul>
 
                         <div>
