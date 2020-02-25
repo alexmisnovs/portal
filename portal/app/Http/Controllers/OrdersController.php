@@ -141,9 +141,12 @@ class OrdersController extends Controller
     {
         // If its a fetch then create
         if($request->post('auto_gen')){
-            echo "Received auto form";
+            $date = substr($request->input('order_date'), 0, 9);
+            
+            echo "Received auto form " . $date ;
             dd($request->post());
         }
+
 
         $request->validate([
             'uc_order_id' => 'required|unique:orders',
