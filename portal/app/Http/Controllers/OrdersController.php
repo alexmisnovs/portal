@@ -141,7 +141,8 @@ class OrdersController extends Controller
     {
         // If its a fetch then create
         if($request->post('auto_gen')){
-
+            echo "Received auto form";
+            dd($request->post());
         }
 
         $request->validate([
