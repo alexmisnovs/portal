@@ -45,7 +45,7 @@
         </div>
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Fetch from UC</div>
+                <div class="card-header">Generate Hold Order from UC</div>
 
                 <div class="card-body">
 
@@ -66,9 +66,9 @@
                         </div>
                     </form>
                     @if($result ?? '')
-                        <?php print_r($result); ?>
-                    <div> Result</div>
-                        @endif
+                            <?php echo "<pre>" ;print_r($result); ?>
+                         <div> Result</div>
+                    @endif
                 </div>
             </div>
         </div>
