@@ -84,7 +84,7 @@ class OrdersController extends Controller
         ]);
 
         if ($validator->fails()){
-            return redirect('orders.orders')
+            return redirect('orders')
                 ->withErrors($validator)
                 ->withInput();
         }
