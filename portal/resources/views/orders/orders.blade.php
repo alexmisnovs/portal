@@ -66,7 +66,9 @@
                         </div>
                     </form>
                     @if($result ?? '')
-                            <?php echo "<pre>" ;print_r($result); ?>
+                            <?php
+//                                echo "<pre>" ;print_r($result);
+                                ?>
                          <div> Customer Details:</div>
                             <ul>
                                 <li>Email: {{ $result['order']['customer_profile']['email'] }}</li>
