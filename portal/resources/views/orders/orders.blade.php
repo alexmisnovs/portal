@@ -43,7 +43,7 @@
                          <div> Customer Details:</div>
                             <ul>
                                 <li>Name: {{ $result['order']['shipping']['title'] }} {{ $result['order']['shipping']['first_name'] }} {{ $result['order']['shipping']['last_name'] }}</li>
-                                <li>Email: {{ $result['order']['shipping']['email'] }}</li>
+                                <li>Email: {{ $result['order']['billing']['email'] }}</li>
                                 @if($result['order']['marketing']['advertising_source'] != '')
                                     <li> {{ $result['order']['marketing']['advertising_source'] }}</li>
                                 @endif
