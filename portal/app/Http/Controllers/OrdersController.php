@@ -162,7 +162,11 @@ class OrdersController extends Controller
            'uc_order_id.unique' => 'This order id already exists..' ,
         ]);
 
-        $input = $request->all();
+        if($request->post('auto_gen')) {
+            $input = $request->except('auto_gen');
+        }else{
+            $input = $request->all();
+        }
         $order = Order::create($input);
 
         return back()->with('success', 'Order added succesfully');
