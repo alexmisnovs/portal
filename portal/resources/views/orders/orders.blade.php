@@ -35,7 +35,7 @@
                     @endif
                     @if($result ?? '')
                             <?php
-//                                echo "<pre>" ;print_r($result);
+                                 echo "<!-- <pre>" ;print_r($result); echo "</pre> -->";
                                 ?>
                          <div> Customer Details:</div>
                             <ul>
