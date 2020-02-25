@@ -70,11 +70,19 @@
                          <div> Customer Details:</div>
                             <ul>
                                 <li>Email: {{ $result['order']['customer_profile']['email'] }}</li>
-                                <li>Name: {{ $result['order']['customer_profile']['email'] }}</li>
+                                <li>Name: {{ $result['order']['shipping']['title'] }}
+                                    {{ $result['order']['shipping']['first_name'] }} {{ $result['order']['shipping']['last_name'] }}
+                                </li>
+
                             </ul>
                             <ul>
-                                <li>Product: {{ $result['order']['customer_profile']['email'] }}</li>
+                                <li>Date Created:  {{ $result['order']['fraud_score']['score'] }}</li>
+                                <li>Product: {{ $result['order']['creation_dts'] }}</li>
+                                <li>Total: {{ $result['order']['summary']['total']['value'] }}</li>
+                                <li>Fraud Score:  {{ $result['order']['fraud_score']['score'] }}</li>
+
                             </ul>
+                            <ul></ul>
                         <div>
                             Affiliate details:
                             Network: {{ $result['order']['checkout']['custom_field7'] }} </br>
