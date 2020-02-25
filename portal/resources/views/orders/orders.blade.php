@@ -54,14 +54,20 @@
                                 <li>Product: {{ $result['order']['items'][0]['accounting_code'] }}</li>
                                 <li>Total: {{ $result['order']['summary']['total']['value'] }}</li>
                                 <li>Fraud Score:  {{ $result['order']['fraud_score']['score'] }}</li>
+                                <li>Customer IP: <a href="https://www.ip2location.com/{{ $result['order']['checkout']['customer_ip_address'] }}" target="_blank"></a> {{ $result['order']['checkout']['customer_ip_address'] }}</li>
+
                             </ul>
 
                         <div>
+                            @if($result['order']['checkout']['custom_field1']  != '')
                             Affiliate details:
                             Network: {{ $result['order']['checkout']['custom_field7'] }} </br>
                             Campaign: {{ $result['order']['checkout']['custom_field2'] }} </br>
                             Affiliate Id: {{ $result['order']['checkout']['custom_field3'] }} </br>
                             Click Id: {{ $result['order']['checkout']['custom_field4'] }}
+                                @else
+                            Ultracart doesn't have any affiliate details for this order.
+                                @endif
                         </div>
                             <div>
                                 <form action="{{route('order-save')}}" method="POST">
