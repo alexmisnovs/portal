@@ -77,7 +77,7 @@ class OrdersController extends Controller
 
         // validate order id
         $validator = Validator::make($request->all(), [
-            'order_id' => 'required|max:23|min:23'
+            'order_id' => 'required|max:23'
         ],[
             'order_id.required' => 'Please provide order id',
 

@@ -56,9 +56,9 @@
 
                         <div class="form-group">
                             <label for="uc_order_id">Ultracart Order Id</label>
-                            <input type="text" class="form-control" name="uc_order_id" id="uc_order_id" placeholder="RDK-123xx">
+                            <input type="text" class="form-control" name="order_id" id="uc_order_id" placeholder="RDK-123xx">
 
-                            @error('uc_order_id')
+                            @error('order_id')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
 
