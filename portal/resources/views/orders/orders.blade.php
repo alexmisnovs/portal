@@ -36,6 +36,7 @@
                                 <li>Email: {{ $result['order']['customer_profile']['email'] }}</li>
                             </ul>
                             <ul>
+                                <li>Order ID:  {{ $result['order']['order_id'] }}</li>
                                 <li>Date Created:  {{ $result['order']['creation_dts'] }}</li>
                                 <li>Product: {{ $result['order']['items'][0]['accounting_code'] }}</li>
                                 <li>Total: {{ $result['order']['summary']['total']['value'] }}</li>
