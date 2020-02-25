@@ -54,7 +54,7 @@
                                 <li>Product: {{ $result['order']['items'][0]['accounting_code'] }}</li>
                                 <li>Total: {{ $result['order']['summary']['total']['value'] }}</li>
                                 <li>Fraud Score:  {{ $result['order']['fraud_score']['score'] }}</li>
-                                <li>Customer IP: <a href="https://www.ip2location.com/{{ $result['order']['checkout']['customer_ip_address'] }}" target="_blank"></a> {{ $result['order']['checkout']['customer_ip_address'] }}</li>
+                                <li>Customer IP: <a href="https://www.ip2location.com/{{ $result['order']['checkout']['customer_ip_address'] }}" target="_blank">{{ $result['order']['checkout']['customer_ip_address'] }}</a> </li>
 
                             </ul>
 
