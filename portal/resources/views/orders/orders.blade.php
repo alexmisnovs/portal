@@ -67,7 +67,18 @@
                     </form>
                     @if($result ?? '')
                             <?php echo "<pre>" ;print_r($result); ?>
-                         <div> Result</div>
+                         <div> Customer Details:</div>
+                            <ul>
+                                <li>Email: {{ $data['order']['customer_profile']['email'] }}</li>
+                                <li>Name: {{ $data['order']['customer_profile']['email'] }}</li>
+                            </ul>
+                        <div>
+                            Affiliate details:
+                            Network: {{ $data['order']['checkout']['custom_field7'] }} </br>
+                            Campaign: {{ $data['order']['checkout']['custom_field2'] }} </br>
+                            Affiliate Id: {{ $data['order']['checkout']['custom_field3'] }} </br>
+                            Click Id: {{ $data['order']['checkout']['custom_field4'] }}
+                        </div>
                     @endif
                 </div>
             </div>
