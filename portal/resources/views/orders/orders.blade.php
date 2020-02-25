@@ -15,7 +15,7 @@
                         </div>
                     @endif
 
-                        <form action="{{route('fetch-order')}}" method="POST">
+                        <form action="{{route('get-order')}}" method="POST">
                             @csrf
                             <input type="text" name="order_id" id="order_id">
 
