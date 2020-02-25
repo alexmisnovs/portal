@@ -78,7 +78,7 @@
                                     @csrf
                                     <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                                     <input type="hidden" name="auto_gen" value="1">
-                                    <input type="hidden" name="customer_email" value="{{ $result['order']['customer_profile']['email'] }}">
+                                    <input type="hidden" name="customer_email" value="{{ $result['order']['billing']['email'] }}">
                                     <input type="hidden" name="customer_name" value="{{ $result['order']['shipping']['title'] }} {{ $result['order']['shipping']['first_name'] }} {{ $result['order']['shipping']['last_name'] }}">
                                     <input type="hidden" name="product" value="{{ $result['order']['items'][0]['accounting_code'] }}">
                                     <input type="hidden" name="order_date" value="{{ $result['order']['creation_dts'] }}">
