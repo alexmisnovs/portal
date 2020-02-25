@@ -45,7 +45,7 @@
                                 <li>Name: {{ $result['order']['shipping']['title'] }} {{ $result['order']['shipping']['first_name'] }} {{ $result['order']['shipping']['last_name'] }}</li>
                                 <li>Email: {{ $result['order']['customer_profile']['email'] }}</li>
                                 @if($result['order']['marketing']['advertising_source'] != '')
-                                    <li>Email: {{ $result['order']['marketing']['advertising_source'] }}</li>
+                                    <li> {{ $result['order']['marketing']['advertising_source'] }}</li>
                                 @endif
                             </ul>
                             <ul>
