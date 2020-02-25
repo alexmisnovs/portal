@@ -95,7 +95,8 @@ class OrdersController extends Controller
 
         $api_instance = new OrderApi(new Client(), $config, $headerSelector);
         $orderToGet = $request->post('order_id') ? $request->post('order_id') : "RDK-202002200711-499644"; // string | The order id to retrieve.
-        $_expand = "checkout,customer_profile,item,shipping,summary,fraud_score,payment,payment.transaction,marketing"; // string | The object expansion to perform on the result.  See documentation for
+        $_expand = "affiliate,affiliate.ledger,auto_order,billing,buysafe,channel_partner,checkout,coupon,customer_profile,digital_order,edi,fraud_score,gift,gift_certificate,internal,item,linked_shipment,marketing,payment,payment.transaction,quote,salesforce,shipping,summary,taxes"; // string | The object expansion to perform on the result.  See documentation for
+        //$_expand = "checkout,customer_profile,item,shipping,summary,fraud_score,payment,payment.transaction,marketing"; // string | The object expansion to perform on the result.  See documentation for
 
         try {
             $result = $api_instance->getOrder($orderToGet, $_expand);
