@@ -15,7 +15,7 @@
                 </div>
 
                 <div class="card-body">
-                    @if(!isset($result))
+
                     <form action="{{route('fetch-order')}}" method="POST">
 
                         @csrf
@@ -28,11 +28,14 @@
                             @error('order_id')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
-
-                            <button type="submit" class="btn btn-primary mt-2">Fetch From UC</button>
+                            @if(!isset($result))
+                              <button type="submit" class="btn btn-primary mt-2">Fetch From UC</button>
+                             @else
+                                <button type="submit" class="btn btn-primary mt-2">Fetch Another UC</button>
+                            @endif
                         </div>
                     </form>
-                    @endif
+
                     @if($result ?? '')
                             <?php
                                  echo "<!-- <pre>" ;print_r($result); echo "</pre> -->";
