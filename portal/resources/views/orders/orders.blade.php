@@ -9,7 +9,7 @@
                 <div class="card-header">Generate Hold Order from UC</div>
 
                 <div class="card-body">
-
+                    @if(!isset($result))
                     <form action="{{route('fetch-order')}}" method="POST">
 
                         @csrf
@@ -26,6 +26,7 @@
                             <button type="submit" class="btn btn-primary mt-2">Fetch From UC</button>
                         </div>
                     </form>
+                    @endif
                     @if($result ?? '')
                             <?php
 //                                echo "<pre>" ;print_r($result);
@@ -68,7 +69,7 @@
                                     <input type="hidden" name="customer_email" value="{{ $result['order']['customer_profile']['email'] }}">
                                     <input type="hidden" name="customer_name" value="{{ $result['order']['shipping']['title'] }} {{ $result['order']['shipping']['first_name'] }} {{ $result['order']['shipping']['last_name'] }}">
                                     <input type="hidden" name="product" value="{{ $result['order']['items'][0]['accounting_code'] }}">
-                                    <input type="hidden" name="order_date" value="">
+                                    <input type="hidden" name="order_date" value="{{ $result['order']['creation_dts'] }}">
                                     <input type="hidden" name="uc_order_id" value="{{ $result['order']['order_id'] }}">
 
                                     <button type="submit" class="btn btn-primary mt-2">Add as a Hold Order to RDK Portal</button>
