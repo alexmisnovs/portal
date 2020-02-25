@@ -50,6 +50,7 @@
                             Affiliate Id: {{ $result['order']['checkout']['custom_field3'] }} </br>
                             Click Id: {{ $result['order']['checkout']['custom_field4'] }}
                         </div>
+                            <div>
                                 <form action="{{route('order-save')}}" method="POST">
                                     <div class="form-group">
                                         <label for="action"> Action </label>
@@ -71,7 +72,9 @@
                                     <input type="hidden" name="uc_order_id" value="{{ $result['order']['order_id'] }}">
 
                                     <button type="submit" class="btn btn-primary mt-2">Add as a Hold Order to RDK Portal</button>
-                                </form>>
+                                </form>
+                            </div>
+
                     @endif
                 </div>
             </div>
