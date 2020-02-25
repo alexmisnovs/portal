@@ -6,7 +6,13 @@
 
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Generate Hold Order from UC</div>
+                <div class="card-header">
+                    @if(!isset($result))
+                    Fetch order from UC
+                    @else
+                    Fetched from UC..
+                    @endif
+                </div>
 
                 <div class="card-body">
                     @if(!isset($result))
