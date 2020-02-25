@@ -31,7 +31,7 @@
                             @if(!isset($result))
                               <button type="submit" class="btn btn-primary mt-2">Fetch From UC</button>
                              @else
-                                <button type="submit" class="btn btn-primary mt-2">Fetch Another UC</button>
+                                <button type="submit" class="btn btn-primary mt-2">Fetch Another UC Order</button>
                             @endif
                         </div>
                     </form>
