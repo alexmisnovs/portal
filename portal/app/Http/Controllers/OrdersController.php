@@ -144,8 +144,8 @@ class OrdersController extends Controller
         if($request->post('auto_gen')){
             $date = substr($request->input('order_date'), 0, 10);
             $request->merge(['order_date' => $date]);
-            echo "Received auto form " . $date ;
-            dd($request->post());
+//            echo "Received auto form " . $date ;
+//            dd($request->post());
         }
 
 
