@@ -15,7 +15,7 @@
                         </div>
                     @endif
 
-                        <form action="{{route('get-order')}}" method="POST">
+                        <form action="{{route('fetch-order')}}" method="POST">
                             @csrf
                             <input type="text" name="order_id" id="order_id">
 
@@ -39,6 +39,35 @@
 
                         @else
                         <div>Please enter order id above</div>
+                        @endif
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Fetch from UC</div>
+
+                <div class="card-body">
+
+                    <form action="{{route('fetch-order')}}" method="POST">
+
+                        @csrf
+                        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+
+                        <div class="form-group">
+                            <label for="uc_order_id">Ultracart Order Id</label>
+                            <input type="text" class="form-control" name="uc_order_id" id="uc_order_id" placeholder="RDK-123xx">
+
+                            @error('uc_order_id')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+
+                            <button type="submit" class="btn btn-primary mt-2">Fetch From UC</button>
+                        </div>
+                    </form>
+                    @if($result ?? '')
+                        <?php dd($result); ?>
+                    <div> Result</div>
                         @endif
                 </div>
             </div>

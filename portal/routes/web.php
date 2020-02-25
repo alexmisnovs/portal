@@ -29,6 +29,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/orders', 'OrdersController@index')->name('orders');
+
 Route::post('/orders/get-uc-order', 'OrdersController@fetchOrderFromUC')->name('get-order');
+Route::post('/orders/fetchOrder', 'OrdersController@fetchUCholdOrder')->name('fetch-order');
+
 Route::get('/orders/create', 'OrdersController@create')->name('order-create');
+Route::post('/orders', 'OrdersController@store')->name('order-save');
 Route::get('/orders/uc-api/{order_id?}', 'OrdersController@fetchUCOrder');

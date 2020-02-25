@@ -14,16 +14,33 @@
                             </div>
                         @endif
 
-                        <div>
-                            <form>
-                                <div class="form-group">
+                        <div id="form">
 
-                                            <label for="uc_order_id">Ultracart Order Id</label>
-                                            <input type="text" class="form-control" name="uc_order_id" id="uc_order_id" placeholder="RDK-123xx">
-                                            <button type="submit" class="btn btn-primary mt-2">Fetch From UC</button>
+                            <form action="{{route('order-save')}}" method="POST">
+
+                                @csrf
+                                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+
+                                <div class="form-group">
+                                    <label for="uc_order_id">Ultracart Order Id</label>
+                                    <input type="text" class="form-control" name="uc_order_id" id="uc_order_id" placeholder="RDK-123xx">
+
+                                    @error('uc_order_id')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                    <label for="order_date">Date Order placed</label>
+                                    <input type="text" class="form-control" name="order_date" id="order_date" placeholder="23/02/2020">
+
+                                    @error('uc_order_id')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                    <button type="submit" class="btn btn-primary mt-2">Fetch From UC</button>
                                    </div>
                                 <div class="form-group">
                                     <label for="product">Product</label>
+                                    @error('product')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                     <input type="text" class="form-control" name="product" id="product" placeholder="Boobie Cream">
                                 </div>
                                 <div class="form-group">
@@ -57,5 +74,6 @@
                 </div>
             </div>
         </div>
+        <script src="https://unpkg.com/js-datepicker"></script>
     </div>
 @endsection
