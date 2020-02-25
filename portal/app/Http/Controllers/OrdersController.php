@@ -169,7 +169,8 @@ class OrdersController extends Controller
         }
         $order = Order::create($input);
 
-        return back()->with('success', 'Order added succesfully');
+        return redirect('orders');
+       // return back()->with('success', 'Order added succesfully');
 
     }
 
