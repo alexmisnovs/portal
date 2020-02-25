@@ -101,6 +101,8 @@
                     @endif
                 </div>
             </div>
+
+            @include('orders.partials._table')
         </div>
     </div>
 </div>
