@@ -28,7 +28,7 @@
                     </form>
                     @if($result ?? '')
                             <?php
-                                echo "<pre>" ;print_r($result);
+//                                echo "<pre>" ;print_r($result);
                                 ?>
                          <div> Customer Details:</div>
                             <ul>
@@ -50,6 +50,28 @@
                             Affiliate Id: {{ $result['order']['checkout']['custom_field3'] }} </br>
                             Click Id: {{ $result['order']['checkout']['custom_field4'] }}
                         </div>
+                                <form action="{{route('order-save')}}" method="POST">
+                                    <div class="form-group">
+                                        <label for="action"> Action </label>
+                                        <select class="form-control" name="action" id="action">
+                                            <option>Reship</option>
+                                            <option>Refund</option>
+                                            <option>Cancel</option>
+                                            <option>Partial Refund</option>
+                                            <option>Fraud</option>
+                                        </select>
+                                    </div>
+                                    @csrf
+                                    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                                    <input type="hidden" name="auto_gen" value="1">
+                                    <input type="hidden" name="customer_email" value="{{ $result['order']['customer_profile']['email'] }}">
+                                    <input type="hidden" name="customer_name" value="{{ $result['order']['shipping']['title'] }} {{ $result['order']['shipping']['first_name'] }} {{ $result['order']['shipping']['last_name'] }}">
+                                    <input type="hidden" name="product" value="{{ $result['order']['items'][0]['accounting_code'] }}">
+                                    <input type="hidden" name="order_date" value="">
+                                    <input type="hidden" name="uc_order_id" value="{{ $result['order']['order_id'] }}">
+
+                                    <button type="submit" class="btn btn-primary mt-2">Add as a Hold Order to RDK Portal</button>
+                                </form>>
                     @endif
                 </div>
             </div>

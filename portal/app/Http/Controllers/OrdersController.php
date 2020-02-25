@@ -139,8 +139,10 @@ class OrdersController extends Controller
      */
     public function store(Request $request)
     {
-        // format the date
+        // If its a fetch then create
+        if($request->post('auto_gen')){
 
+        }
 
         $request->validate([
             'uc_order_id' => 'required|unique:orders',

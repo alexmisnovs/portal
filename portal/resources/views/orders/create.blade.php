@@ -34,7 +34,7 @@
                                     @error('uc_order_id')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
-                                    <button type="submit" class="btn btn-primary mt-2">Fetch From UC</button>
+{{--                                    <button type="submit" class="btn btn-primary mt-2">Fetch From UC</button>--}}
                                    </div>
                                 <div class="form-group">
                                     <label for="product">Product</label>
