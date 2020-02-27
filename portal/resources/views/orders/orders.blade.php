@@ -36,7 +36,7 @@
                         </div>
                     </form>
                     @error('uc_order_id')
-                        <span>{{ $message }}</span>
+                        <span class="alert-danger">{{ $message }}</span>
                     @enderror
                     @if($result ?? '')
                             <?php
