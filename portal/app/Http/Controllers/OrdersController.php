@@ -190,7 +190,7 @@ class OrdersController extends Controller
 
 
         $request->merge(['order_date' => $new_date]);
-        
+
         if($request->post('auto_gen')) {
          //   $input = $request->except('auto_gen');
             $order = Order::create($request->except('auto_gen'));
@@ -317,7 +317,7 @@ class OrdersController extends Controller
                     }
 
                 })
-                ->get();
+                ->paginate(10);
             return view('orders.search')->with('orders', $orders);
 
         }
