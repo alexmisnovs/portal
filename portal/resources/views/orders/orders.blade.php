@@ -35,7 +35,9 @@
                             @endif
                         </div>
                     </form>
-
+                    @error('uc_order_id')
+                        <span>{{ $message }}</span>
+                    @enderror
                     @if($result ?? '')
                             <?php
                                  echo "<!-- <pre>" ;print_r($result); echo "</pre> -->";
@@ -100,6 +102,7 @@
                             </div>
 
                     @endif
+
                 </div>
             </div>
 

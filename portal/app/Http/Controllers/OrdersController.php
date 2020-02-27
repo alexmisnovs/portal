@@ -149,7 +149,7 @@ class OrdersController extends Controller
             $validator = Validator::make($request->all(), [
                 'uc_order_id' => 'required|unique:orders',
             ],[
-                'order_id.unique' => 'This order already exists in the system',
+                'uc_order_id.unique' => 'This order already exists in the system',
             ]);
 
             if ($validator->fails()){
@@ -179,7 +179,7 @@ class OrdersController extends Controller
         }else{
             $input = $request->all();
         }
-        
+
         $order = Order::create($input);
 
         return redirect('orders');
