@@ -57,6 +57,7 @@
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="{{ route('orders') }}">{{ __('Order List') }}</a>
                                         <a class="dropdown-item" href="{{ route('order-create') }}">{{ __('Add Order Manually') }}</a>
+                                        <a class="dropdown-item" href="{{ route('orders-search') }}">{{ __('Search Orders') }}</a>
                                     </div>
                             </li>
                             <li class="nav-item dropdown">

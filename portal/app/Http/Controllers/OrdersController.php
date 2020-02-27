@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Order;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
@@ -26,7 +27,7 @@ class OrdersController extends Controller
     public function index()
     {
         //
-            $orders = Order::all();
+            $orders = Order::paginate(10);
             return view('orders.orders')->with('orders', $orders);
 
     }
@@ -173,14 +174,27 @@ class OrdersController extends Controller
                 'uc_order_id.unique' => 'This order id already exists..' ,
             ]);
         }
-
+      //  dd($request->all());
         if($request->post('auto_gen')) {
             $input = $request->except('auto_gen');
         }else{
             $input = $request->all();
         }
 
-        $order = Order::create($input);
+        $passed_date  = $request->post('order_date');
+        if (strpos($passed_date, '/') !== false) {
+            $passed_date = str_replace('/', '-', $passed_date);
+        }
+
+// Creating timestamp from given date
+        $timestamp = strtotime($passed_date);
+
+// Creating new date format from that timestamp
+        $new_date = date("Y-m-d", $timestamp);
+
+
+        $request->merge(['order_date' => $new_date]);
+        $order = Order::create($request->all());
 
         return redirect('orders');
        // return back()->with('success', 'Order added succesfully');
@@ -245,4 +259,72 @@ class OrdersController extends Controller
        // TODO: Do notify user that the record was deleted
         return redirect('orders');
     }
+    public function searchGet($searchTerm){
+
+       $result = Order::query()
+            ->where('customer_name', 'LIKE', "%{$searchTerm}%")
+            ->orWhere('customer_email', 'LIKE', "%{$searchTerm}%")
+           ->orWhere('uc_order_id', 'LIKE', "%{$searchTerm}%")
+           ->orWhere('action', 'LIKE', "%{$searchTerm}%")
+            ->get();
+
+
+        return view('orders.search', compact($result));
+    }
+
+    public function search(Request $request){
+
+        if($request->isMethod('post')){
+
+            $orders = DB::table('orders')
+                ->where(function($query) use ($request)
+                {
+
+                    if($request->post('uc_order_id') != null) {
+                        $searchTerm = $request->post('uc_order_id');
+                        $query->where('uc_order_id', 'LIKE', "%{$searchTerm}%");
+                    }
+                    // name and a specific status
+                    if($request->post('customer_name') != null && $request->post('action') != null) {
+                        $searchTerm1 = $request->post('customer_name');
+                        $searchTerm2 = $request->post('action');
+                        $query->Where('customer_name', 'LIKE', "%{$searchTerm1}%")
+                            ->Where('action', 'LIKE', "%{$searchTerm2}%");
+                    }
+                    // name and any status
+                    if($request->post('customer_name') != null) {
+                        $searchTerm = $request->post('customer_name');
+                        $query->Where('customer_name', 'LIKE', "%{$searchTerm}%");
+                    }
+                    //email and specific status
+                    if($request->post('customer_email') != null && $request->post('action') != null) {
+                        $searchTerm1 = $request->post('customer_email');
+                        $searchTerm2 = $request->post('action');
+                        $query->Where('customer_name', 'LIKE', "%{$searchTerm1}%")
+                            ->Where('action', 'LIKE', "%{$searchTerm2}%");
+                    }
+                    // just by email all statuses
+                    if($request->post('customer_email') != null) {
+                        $searchTerm = $request->post('customer_email');
+                        $query->Where('customer_email', 'LIKE', "%{$searchTerm}%");
+                    }
+                    if($request->post('action') != null) {
+                        $searchTerm = $request->post('action');
+                        $query->Where('action', 'LIKE', "%{$searchTerm}%");
+                    }
+
+                })
+                ->get();
+            return view('orders.search')->with('orders', $orders);
+
+        }
+         else {
+            $orders = null;
+            return view('orders.search')->with('orders', $orders);
+        }
+
+
+      //  dd($result);
+    }
+
 }

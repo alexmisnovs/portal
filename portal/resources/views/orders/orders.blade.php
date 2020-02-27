@@ -15,26 +15,62 @@
                 </div>
 
                 <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <form action="{{route('fetch-order')}}" method="POST">
 
-                    <form action="{{route('fetch-order')}}" method="POST">
+                                @csrf
+                                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
 
-                        @csrf
-                        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                                <div class="form-group">
+                                    <label for="uc_order_id">Ultracart Order Id</label>
+                                    <input type="text" class="form-control" name="order_id" id="uc_order_id" placeholder="RDK-123xx">
 
-                        <div class="form-group">
-                            <label for="uc_order_id">Ultracart Order Id</label>
-                            <input type="text" class="form-control" name="order_id" id="uc_order_id" placeholder="RDK-123xx">
-
-                            @error('order_id')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
-                            @if(!isset($result))
-                              <button type="submit" class="btn btn-primary mt-2">Fetch From UC</button>
-                             @else
-                                <button type="submit" class="btn btn-primary mt-2">Fetch Another UC Order</button>
-                            @endif
+                                    @error('order_id')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                    @if(!isset($result))
+                                        <button type="submit" class="btn btn-primary mt-2">Fetch From UC</button>
+                                    @else
+                                        <button type="submit" class="btn btn-primary mt-2">Fetch Another UC Order</button>
+                                    @endif
+                                </div>
+                            </form>
                         </div>
-                    </form>
+                        <div class="col-md-6">
+                            <form action="{{route('post-search')}}" method="POST">
+
+                                @csrf
+
+                                <div class="form-group">
+                                    <label for="uc_order_id">Ultracart Order Id (can use just parts)</label>
+                                    <input type="text" class="form-control" name="uc_order_id" id="uc_order_id" placeholder="12345">
+
+                                    <label for="customer_name">Customer First/Last or Full Name</label>
+                                    <input type="text" class="form-control" name="customer_name" id="customer_name" placeholder="">
+                                    <label for="customer_email">Customers email</label>
+                                    <input type="text" class="form-control" name="customer_email" id="customer_email" placeholder="">
+
+                                    <div class="form-group">
+                                        <label for="action"> Status </label>
+                                        <select class="form-control" name="action" id="action">
+                                            <option disabled selected value> -- select an option -- </option>
+                                            <option>Completed</option>
+                                            <option>Reship</option>
+                                            <option>Refund</option>
+                                            <option>Cancel</option>
+                                            <option>Partial Refund</option>
+                                            <option>Fraud</option>
+                                        </select>
+                                    </div>
+
+                                        <button type="submit" class="btn btn-primary mt-2">Search Portal</button>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
                     @error('uc_order_id')
                         <span class="alert-danger">{{ $message }}</span>
                     @enderror
@@ -105,6 +141,7 @@
 
                 </div>
             </div>
+
 
             @include('orders.partials._table')
         </div>

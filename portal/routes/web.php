@@ -38,3 +38,9 @@ Route::delete('/orders/delete/{id}', 'OrdersController@destroy')->name('delete-o
 Route::get('/orders/create', 'OrdersController@create')->name('order-create');
 Route::post('/orders', 'OrdersController@store')->name('order-save');
 Route::get('/orders/uc-api/{order_id?}', 'OrdersController@fetchUCOrder');
+
+
+// searching
+Route::get('/orders/search-get/{searchTerm?}', 'OrdersController@searchGet')->name('search-get');
+Route::post('/orders/search/', 'OrdersController@search')->name('post-search');
+Route::get('/orders/search/', 'OrdersController@search')->name('orders-search');

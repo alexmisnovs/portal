@@ -37,9 +37,11 @@
     </tr>
      @empty
         <tr>
-            <div>No records found</div>
+            <td colspan="10">No records found.</td>
         </tr>
     @endforelse
     </tbody>
 </table>
+
+{!! $orders->links() !!}
     @endif

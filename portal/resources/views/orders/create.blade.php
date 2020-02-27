@@ -23,33 +23,33 @@
 
                                 <div class="form-group">
                                     <label for="uc_order_id">Ultracart Order Id</label>
-                                    <input type="text" class="form-control" name="uc_order_id" id="uc_order_id" placeholder="RDK-123xx">
+                                    <input type="text" class="form-control" name="uc_order_id" id="uc_order_id" placeholder="RDK-123xx" value="{{old('uc_order_id')}}">
 
                                     @error('uc_order_id')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
                                     <label for="order_date">Date Order placed</label>
-                                    <input type="text" class="form-control" name="order_date" id="order_date" placeholder="23/02/2020">
+                                    <input type="text" class="form-control" name="order_date" id="order_date" placeholder="23-02-2020" value="{{old('order_date')}}">
 
-                                    @error('uc_order_id')
+                                    @error('order_date')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
-{{--                                    <button type="submit" class="btn btn-primary mt-2">Fetch From UC</button>--}}
+
                                    </div>
                                 <div class="form-group">
                                     <label for="product">Product</label>
                                     @error('product')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
-                                    <input type="text" class="form-control" name="product" id="product" placeholder="Boobie Cream">
+                                    <input type="text" class="form-control" name="product" id="product" placeholder="Boobie Cream" value="{{old('product')}}">
                                 </div>
                                 <div class="form-group">
                                     <label for="customer_name">Customer Full Name</label>
-                                    <input type="text" class="form-control" name="customer_name" id="customer_name" placeholder="Donald Trump">
+                                    <input type="text" class="form-control" name="customer_name" id="customer_name" placeholder="Alvarius John" value="{{old('customer_name')}}">
                                 </div>
                                 <div class="form-group">
                                     <label for="customer_email">Email address</label>
-                                    <input type="email" class="form-control"  name="customer_email" id="customer_email" placeholder="name@example.com">
+                                    <input type="email" class="form-control"  name="customer_email" id="customer_email" placeholder="name@example.com" value="{{old('customer_email')}}">
                                 </div>
                                 <div class="form-group">
                                     <label for="action"> Status </label>
@@ -64,7 +64,7 @@
 
                                 <div class="form-group">
                                     <label for="description">Description</label>
-                                    <textarea class="form-control" name="description" id="description" rows="3"></textarea>
+                                    <textarea class="form-control" name="description" id="description" rows="3" {{old('description')}}></textarea>
                                 </div>
                                 <input type="submit"  class="btn btn-primary" value="Add Order">
 
@@ -74,6 +74,6 @@
                 </div>
             </div>
         </div>
-        <script src="https://unpkg.com/js-datepicker"></script>
+
     </div>
 @endsection
