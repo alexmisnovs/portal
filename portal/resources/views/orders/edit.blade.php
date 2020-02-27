@@ -70,8 +70,7 @@
 
                                 <div class="form-group">
                                     <label for="description">Notes</label>
-                                    <textarea class="form-control" name="description" id="description" rows="3">
-                                        {{ $order->description }}
+                                    <textarea class="form-control" name="description" id="description" rows="3">{{ $order->description }}
                                     </textarea>
                                 </div>
                                 <input type="submit"  class="btn btn-primary" value="Update Order">
