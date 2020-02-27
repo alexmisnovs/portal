@@ -175,11 +175,7 @@ class OrdersController extends Controller
             ]);
         }
       //  dd($request->all());
-        if($request->post('auto_gen')) {
-            $input = $request->except('auto_gen');
-        }else{
-            $input = $request->all();
-        }
+
 
         $passed_date  = $request->post('order_date');
         if (strpos($passed_date, '/') !== false) {
@@ -194,7 +190,14 @@ class OrdersController extends Controller
 
 
         $request->merge(['order_date' => $new_date]);
-        $order = Order::create($request->all());
+        
+        if($request->post('auto_gen')) {
+         //   $input = $request->except('auto_gen');
+            $order = Order::create($request->except('auto_gen'));
+        }else{
+            $order = Order::create($request->all());
+        }
+
 
         return redirect('orders');
        // return back()->with('success', 'Order added succesfully');
