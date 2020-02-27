@@ -95,6 +95,7 @@
                                     <input type="hidden" name="uc_order_id" value="{{ $result['order']['order_id'] }}">
 
                                     <button type="submit" class="btn btn-primary mt-2">Add as a Hold Order to RDK Portal</button>
+                                    <a class="btn btn-outline-light" href="{{ route('orders') }}">Back</a>
                                 </form>
                             </div>
 
