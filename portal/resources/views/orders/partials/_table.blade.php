@@ -1,4 +1,4 @@
-@if($orders)
+@if(!empty($orders))
 {{--@dump($orders)--}}
 <table class="table">
     <thead>
