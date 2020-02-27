@@ -145,27 +145,41 @@ class OrdersController extends Controller
             $request->merge(['order_date' => $date]);
 //            echo "Received auto form " . $date ;
 //            dd($request->post());
+
+            $validator = Validator::make($request->all(), [
+                'uc_order_id' => 'required|unique:orders',
+            ],[
+                'order_id.unique' => 'This order already exists in the system',
+            ]);
+
+            if ($validator->fails()){
+                return redirect('orders')
+                    ->withErrors($validator)
+                    ->withInput();
+            }
         }
 
+        else{
+            $request->validate([
+                'uc_order_id' => 'required|unique:orders',
+                'product' => 'required',
+                'customer_name' => 'required',
+                'customer_email' => 'required|email',
+                'action' => 'required',
+                'order_date' => 'required',
 
-        $request->validate([
-            'uc_order_id' => 'required|unique:orders',
-            'product' => 'required',
-            'customer_name' => 'required',
-            'customer_email' => 'required|email',
-            'action' => 'required',
-            'order_date' => 'required',
-
-        ], [
-           'uc_order_id.required' => 'Please enter order id..' ,
-           'uc_order_id.unique' => 'This order id already exists..' ,
-        ]);
+            ], [
+                'uc_order_id.required' => 'Please enter order id..' ,
+                'uc_order_id.unique' => 'This order id already exists..' ,
+            ]);
+        }
 
         if($request->post('auto_gen')) {
             $input = $request->except('auto_gen');
         }else{
             $input = $request->all();
         }
+        
         $order = Order::create($input);
 
         return redirect('orders');
