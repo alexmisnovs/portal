@@ -1,3 +1,4 @@
+@if($orders)
 {{--@dump($orders)--}}
 <table class="table">
     <thead>
@@ -41,3 +42,4 @@
     @endforelse
     </tbody>
 </table>
+    @endif
