@@ -181,7 +181,7 @@ class OrdersController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -193,6 +193,10 @@ class OrdersController extends Controller
     public function edit($id)
     {
         //
+        //get order
+        $order = Order::findOrFail($id);
+        return view('orders.edit')->with('order', $order);
+        //  return view('orders.show', compact($order));
     }
 
     /**
@@ -205,6 +209,11 @@ class OrdersController extends Controller
     public function update(Request $request, $id)
     {
         //
+
+        Order::where('id', $id)->update($request->except('_token'));
+        return redirect('orders');
+
+
     }
 
     /**
@@ -215,6 +224,11 @@ class OrdersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //delete the record
+        $order = Order::findOrFail($id);
+        $deleted = $order->delete();
+
+       // TODO: Do notify user that the record was deleted
+        return redirect('orders');
     }
 }

@@ -1,30 +1,43 @@
+{{--@dump($orders)--}}
 <table class="table">
     <thead>
     <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
+        <th scope="col">UC ID</th>
+        <th scope="col">Full Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Product</th>
+        <th scope="col">Order Date</th>
+        <th scope="col">Status</th>
+        <th scope="col" style="width:  12.33%">Action</th>
     </tr>
     </thead>
     <tbody>
+    @forelse($orders as $order)
     <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
+        <td>{{ $order->uc_order_id }}</td>
+        <td>{{ $order->customer_name }}</td>
+        <td>{{ $order->customer_email }}</td>
+        <td>{{ $order->product }}</td>
+        <td>{{  \Illuminate\Support\Carbon::parse($order->order_date)->format('d/m/Y') }}</td>
+        <td>{{ $order->action }}</td>
+        <td>
+            <form action="{{ route('edit-order', ['id' => $order->id]) }}">
+                <button class="float-left">Edit</button>
+            </form>
+            <form action="{{ route('delete-order', ['id' => $order->id]) }}" method="POST"
+                  onsubmit="return confirm('Do you really want to submit the form?');"
+                    class="">
+                @csrf
+                @method('delete')
+                <button class="btn-outline-danger float-left ml-2">Delete</button>
+            </form>
+        </td>
+
     </tr>
-    <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-    </tr>
-    <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-    </tr>
+     @empty
+        <tr>
+            <div>No records found</div>
+        </tr>
+    @endforelse
     </tbody>
 </table>
