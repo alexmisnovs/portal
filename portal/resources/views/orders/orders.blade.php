@@ -41,9 +41,9 @@
                             <span class="alert-danger">{{ $message }}</span>
                             @enderror
                             @if($result ?? '')
-                                <?php
-                                echo "<!-- <pre>" ;print_r($result); echo "</pre> -->";
-                                ?>
+<!--                                --><?php
+//                                echo "<!-- <pre>" ;print_r($result); echo "</pre> -->";
+//                                ?>
                                 <div> Customer Details:</div>
                                 <ul>
                                     <li>Name: {{ $result['order']['shipping']['title'] }} {{ $result['order']['shipping']['first_name'] }} {{ $result['order']['shipping']['last_name'] }}</li>
@@ -76,7 +76,7 @@
                                                 Campaign: Phen375 Revshare
                                             @elseif(strpos($result['order']['items'][0]['accounting_code'], 'PHEN') && strpos($result['order']['checkout']['custom_field7'], 'CPA'))
                                                 Campaign: Phen375 CPA
-                                            @endif
+                                         @endif
 
                                         @else
                                             Network: {{ $result['order']['checkout']['custom_field1']}} </br>
@@ -93,8 +93,9 @@
                                         <p class="alert-danger"> Ultracart doesn't have any affiliate details for this order.</p>
                                     @endif
                                 </div>
+                                @endif
                         </div>
-                    
+
                         <div class="col-md-6">
                             <form action="{{route('post-search')}}" method="POST">
 
