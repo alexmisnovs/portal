@@ -97,18 +97,23 @@
                             </ul>
 
                         <div>
-                            @if($result['order']['checkout']['custom_field1']  != '')
+                            @if($result['order']['checkout']['custom_field1']  != '' || $result['order']['checkout']['custom_field7'] != '' )
                             Affiliate details:
-                            Network: {{ $result['order']['checkout']['custom_field7'] }} </br>
-                            Campaign: {{ $result['order']['checkout']['custom_field2'] }} </br>
-                                    @if($result['order']['checkout']['custom_field1'] == 'oi')
-                                        Affiliate Id: <a href="https://account.linktrust.com/New/Reports/AffiliatePerformance?AffiliateId={{ $result['order']['checkout']['custom_field3'] }}" target="_blank"> {{ $result['order']['checkout']['custom_field3'] }} </a></br>
-                                    @else
-                                        Affiliate Id: {{ $result['order']['checkout']['custom_field3'] }} </br>
-                                    @endif
-                                Click Id: {{ $result['order']['checkout']['custom_field4'] }}
+                                @if($result['order']['checkout']['custom_field7'] != '')
+                                    Network: {{ $result['order']['checkout']['custom_field7'] }} </br>
                                 @else
-                            Ultracart doesn't have any affiliate details for this order.
+                                        Network: {{ $result['order']['checkout']['custom_field7'] }} </br>
+                                        Campaign: {{ $result['order']['checkout']['custom_field2'] }} </br>
+                                        @if($result['order']['checkout']['custom_field1'] == 'oi')
+                                            Affiliate Id: <a href="https://account.linktrust.com/New/Reports/AffiliatePerformance?AffiliateId={{ $result['order']['checkout']['custom_field3'] }}" target="_blank"> {{ $result['order']['checkout']['custom_field3'] }} </a></br>
+                                        @else
+                                            Affiliate Id: {{ $result['order']['checkout']['custom_field3'] }} </br>
+                                        @endif
+                                    Click Id: {{ $result['order']['checkout']['custom_field4'] }}
+                                @endif
+
+                                @else
+                                    <p class="alert-danger"> Ultracart doesn't have any affiliate details for this order.</p>
                                 @endif
                         </div>
                             <div>
