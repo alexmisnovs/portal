@@ -71,13 +71,8 @@
                                                     @if($result['order']['checkout']['custom_field1']  != '' || $result['order']['checkout']['custom_field7'] != '' )
                                                         <h3>Affiliate details:</h3>
                                                         @if($result['order']['checkout']['custom_field7'] != '' && $result['order']['checkout']['custom_field1']  == '')
-                                                            Network:
-                                                            @if ( $result['order']['checkout']['custom_field7'] == 'SS')
-                                                                Share A Sale
-                                                            @elseif ($result['order']['checkout']['custom_field7'] == 'CJ')
-                                                                Commission Junction
-                                                            @endif
-                                                            <br>
+                                                            Network: {{ $result['order']['checkout']['custom_field7'] }} </br>
+
                                                             @if(strpos($result['order']['items'][0]['accounting_code'], 'BREST') && strpos($result['order']['checkout']['custom_field7'], 'REV'))
                                                                 Campaign: Brestrogen Revshare
                                                             @elseif(strpos($result['order']['items'][0]['accounting_code'], 'BREST') && strpos($result['order']['checkout']['custom_field7'], 'CPA'))
@@ -86,7 +81,7 @@
                                                                 Campaign: Phen375 Revshare
                                                             @elseif(strpos($result['order']['items'][0]['accounting_code'], 'PHEN') && strpos($result['order']['checkout']['custom_field7'], 'CPA'))
                                                                 Campaign: Phen375 CPA
-{{--                                                                Share a Sale--}}
+
 
                                                             @endif
 
