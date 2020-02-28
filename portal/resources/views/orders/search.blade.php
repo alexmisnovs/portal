@@ -22,16 +22,16 @@
 
                             <div class="form-group">
                                 <label for="uc_order_id">Ultracart Order Id (can use just parts)</label>
-                                <input type="text" class="form-control" name="uc_order_id" id="uc_order_id" placeholder="12345">
+                                <input type="text" class="form-control form-control-sm" name="uc_order_id" id="uc_order_id" placeholder="12345">
 
                                 <label for="customer_name">Customer First/Last or Full Name</label>
-                                <input type="text" class="form-control" name="customer_name" id="customer_name" placeholder="">
+                                <input type="text" class="form-control form-control-sm" name="customer_name" id="customer_name" placeholder="">
                                 <label for="customer_email">Customers email</label>
-                                <input type="text" class="form-control" name="customer_email" id="customer_email" placeholder="">
+                                <input type="text" class="form-control form-control-sm" name="customer_email" id="customer_email" placeholder="">
 
                                 <div class="form-group">
                                     <label for="action"> Status </label>
-                                    <select class="form-control" name="action" id="action">
+                                    <select class="form-control form-control-sm" name="action" id="action">
                                         <option disabled selected value> -- select an option -- </option>
                                         <option>Completed</option>
                                         <option>Reship</option>
