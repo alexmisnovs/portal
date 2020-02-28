@@ -7,7 +7,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    @if(!isset($result))
+                    @if($result ?? '')
                     Fetch order from UC
                     @else
                     Fetched from UC..
@@ -30,7 +30,7 @@
                                     @error('order_id')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
-                                    @if(!isset($result))
+                                    @if($result ?? '')
                                         <button type="submit" class="btn btn-primary mt-2">Fetch From UC</button>
                                     @else
                                         <button type="submit" class="btn btn-primary mt-2">Fetch Another UC Order</button>
