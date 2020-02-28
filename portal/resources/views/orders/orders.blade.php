@@ -16,6 +16,7 @@
 
                 <div class="card-body">
                     <div class="row">
+
                         <div class="col-md-6">
                             <form action="{{route('fetch-order')}}" method="POST">
 
@@ -78,7 +79,7 @@
                                             @endif
 
                                         @else
-                                            Network: {{ $result['order']['checkout']['custom_field7'] }} </br>
+                                            Network: {{ $result['order']['checkout']['custom_field1']}} </br>
                                             Campaign: {{ $result['order']['checkout']['custom_field2'] }} </br>
                                             @if($result['order']['checkout']['custom_field1'] == 'oi')
                                                 Affiliate Id: <a href="https://account.linktrust.com/New/Reports/AffiliatePerformance?AffiliateId={{ $result['order']['checkout']['custom_field3'] }}" target="_blank"> {{ $result['order']['checkout']['custom_field3'] }} </a></br>
@@ -93,6 +94,7 @@
                                     @endif
                                 </div>
                         </div>
+                    
                         <div class="col-md-6">
                             <form action="{{route('post-search')}}" method="POST">
 
