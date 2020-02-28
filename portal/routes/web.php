@@ -25,7 +25,7 @@ Route::get('/postback/orders/{order_id?}', 'TicketsController@ucApiGetOrder');
 Route::get('/zendesk/user/{user_email?}', 'TicketsController@findZendeskTicketByEmail');
 
 
-Auth::routes();
+Auth::routes(['verify' => true, 'register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/orders', 'OrdersController@index')->name('orders');
@@ -44,3 +44,5 @@ Route::get('/orders/uc-api/{order_id?}', 'OrdersController@fetchUCOrder');
 Route::get('/orders/search-get/{searchTerm?}', 'OrdersController@searchGet')->name('search-get');
 Route::post('/orders/search/', 'OrdersController@search')->name('post-search');
 Route::get('/orders/search/', 'OrdersController@search')->name('orders-search');
+
+
