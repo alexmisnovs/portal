@@ -15,7 +15,7 @@
                             </h5>
                         </div>
 
-                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                             <div class="card-body">
 
                                 <div class="row">
@@ -167,7 +167,7 @@
                         </div>
                     </div>
                 </div>
-                
+
 
 
                 @include('orders.partials._table')
