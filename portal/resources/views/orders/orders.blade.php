@@ -99,7 +99,7 @@
                         <div>
                             @if($result['order']['checkout']['custom_field1']  != '' || $result['order']['checkout']['custom_field7'] != '' )
                             Affiliate details:
-                                @if($result['order']['checkout']['custom_field7'] != '')
+                                @if($result['order']['checkout']['custom_field7'] != '' && $result['order']['checkout']['custom_field1']  == '')
                                     Network: {{ $result['order']['checkout']['custom_field7'] }} </br>
                                 @else
                                         Network: {{ $result['order']['checkout']['custom_field7'] }} </br>
