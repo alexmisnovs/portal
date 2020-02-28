@@ -40,7 +40,7 @@
                                 @error('uc_order_id')
                                 <span class="alert-danger">{{ $message }}</span>
                                 @enderror
-                                @if($result ?? '')
+                                @if(isset($result))
                                     <?php
                                     echo "<!-- <pre>" ;print_r($result); echo "</pre> -->";
                                     ?>
@@ -93,6 +93,7 @@
                                             <p class="alert-danger"> Ultracart doesn't have any affiliate details for this order.</p>
                                         @endif
                                     </div>
+                                    @endif
                             </div>
 
                             <div class="col-md-6">
@@ -128,7 +129,7 @@
                                 </form>
                             </div>
                         </div>
-
+                        @if(isset($result))
                         <div>
                             <form action="{{route('order-save')}}" method="POST">
                                 <div class="form-group">
