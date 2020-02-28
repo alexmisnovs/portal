@@ -66,6 +66,17 @@
                                        <h3>Affiliate details:</h3>
                                         @if($result['order']['checkout']['custom_field7'] != '' && $result['order']['checkout']['custom_field1']  == '')
                                           Network: {{ $result['order']['checkout']['custom_field7'] }} </br>
+
+                                            @if(strpos($result['order']['items'][0]['accounting_code'], 'BREST') && strpos($result['order']['checkout']['custom_field7'], 'REV'))
+                                                Campaign: Brestrogen Revshare
+                                            @elseif(strpos($result['order']['items'][0]['accounting_code'], 'BREST') && strpos($result['order']['checkout']['custom_field7'], 'CPA'))
+                                                Campaign: Brestrogen CPA
+                                            @elseif(strpos($result['order']['items'][0]['accounting_code'], 'PHEN') && strpos($result['order']['checkout']['custom_field7'], 'REV'))
+                                                Campaign: Phen375 Revshare
+                                            @elseif(strpos($result['order']['items'][0]['accounting_code'], 'PHEN') && strpos($result['order']['checkout']['custom_field7'], 'CPA'))
+                                                Campaign: Phen375 CPA
+                                            @endif
+
                                         @else
                                             Network: {{ $result['order']['checkout']['custom_field7'] }} </br>
                                             Campaign: {{ $result['order']['checkout']['custom_field2'] }} </br>
