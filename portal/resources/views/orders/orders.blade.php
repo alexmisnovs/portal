@@ -36,6 +36,51 @@
                                     @endif
                                 </div>
                             </form>
+                            @error('uc_order_id')
+                            <span class="alert-danger">{{ $message }}</span>
+                            @enderror
+                            @if($result ?? '')
+                                <?php
+                                echo "<!-- <pre>" ;print_r($result); echo "</pre> -->";
+                                ?>
+                                <div> Customer Details:</div>
+                                <ul>
+                                    <li>Name: {{ $result['order']['shipping']['title'] }} {{ $result['order']['shipping']['first_name'] }} {{ $result['order']['shipping']['last_name'] }}</li>
+                                    <li>Email: {{ $result['order']['billing']['email'] }}</li>
+                                    @if($result['order']['marketing']['advertising_source'] != '')
+                                        <li> {{ $result['order']['marketing']['advertising_source'] }}</li>
+                                    @endif
+                                </ul>
+                                <ul>
+                                    <li>Order ID:  {{ $result['order']['order_id'] }}</li>
+                                    <li>Date Created:  {{ $result['order']['creation_dts'] }}</li>
+                                    <li>Product: {{ $result['order']['items'][0]['accounting_code'] }}</li>
+                                    <li>Total: {{ $result['order']['summary']['total']['value'] }}</li>
+                                    <li>Fraud Score:  {{ $result['order']['fraud_score']['score'] }}</li>
+                                    <li>Customer IP: <a href="https://www.ip2location.com/{{ $result['order']['checkout']['customer_ip_address'] }}" target="_blank">{{ $result['order']['checkout']['customer_ip_address'] }}</a> </li>
+
+                                </ul>
+
+                                <div>
+                                    @if($result['order']['checkout']['custom_field1']  != '' || $result['order']['checkout']['custom_field7'] != '' )
+                                       <h3>Affiliate details:</h3>
+                                        @if($result['order']['checkout']['custom_field7'] != '' && $result['order']['checkout']['custom_field1']  == '')
+                                          Network: {{ $result['order']['checkout']['custom_field7'] }} </br>
+                                        @else
+                                            Network: {{ $result['order']['checkout']['custom_field7'] }} </br>
+                                            Campaign: {{ $result['order']['checkout']['custom_field2'] }} </br>
+                                            @if($result['order']['checkout']['custom_field1'] == 'oi')
+                                                Affiliate Id: <a href="https://account.linktrust.com/New/Reports/AffiliatePerformance?AffiliateId={{ $result['order']['checkout']['custom_field3'] }}" target="_blank"> {{ $result['order']['checkout']['custom_field3'] }} </a></br>
+                                            @else
+                                                Affiliate Id: {{ $result['order']['checkout']['custom_field3'] }} </br>
+                                            @endif
+                                            Click Id: {{ $result['order']['checkout']['custom_field4'] }}
+                                        @endif
+
+                                    @else
+                                        <p class="alert-danger"> Ultracart doesn't have any affiliate details for this order.</p>
+                                    @endif
+                                </div>
                         </div>
                         <div class="col-md-6">
                             <form action="{{route('post-search')}}" method="POST">
@@ -43,7 +88,7 @@
                                 @csrf
 
                                 <div class="form-group">
-                                    <label for="uc_order_id">Ultracart Order Id (can use just parts)</label>
+                                    <label for="uc_order_id">Ultracart Order Id (can use parts of the order id)</label>
                                     <input type="text" class="form-control" name="uc_order_id" id="uc_order_id" placeholder="12345">
 
                                     <label for="customer_name">Customer First/Last or Full Name</label>
@@ -71,51 +116,6 @@
                         </div>
                     </div>
 
-                    @error('uc_order_id')
-                        <span class="alert-danger">{{ $message }}</span>
-                    @enderror
-                    @if($result ?? '')
-                            <?php
-                                 echo "<!-- <pre>" ;print_r($result); echo "</pre> -->";
-                                ?>
-                         <div> Customer Details:</div>
-                            <ul>
-                                <li>Name: {{ $result['order']['shipping']['title'] }} {{ $result['order']['shipping']['first_name'] }} {{ $result['order']['shipping']['last_name'] }}</li>
-                                <li>Email: {{ $result['order']['billing']['email'] }}</li>
-                                @if($result['order']['marketing']['advertising_source'] != '')
-                                    <li> {{ $result['order']['marketing']['advertising_source'] }}</li>
-                                @endif
-                            </ul>
-                            <ul>
-                                <li>Order ID:  {{ $result['order']['order_id'] }}</li>
-                                <li>Date Created:  {{ $result['order']['creation_dts'] }}</li>
-                                <li>Product: {{ $result['order']['items'][0]['accounting_code'] }}</li>
-                                <li>Total: {{ $result['order']['summary']['total']['value'] }}</li>
-                                <li>Fraud Score:  {{ $result['order']['fraud_score']['score'] }}</li>
-                                <li>Customer IP: <a href="https://www.ip2location.com/{{ $result['order']['checkout']['customer_ip_address'] }}" target="_blank">{{ $result['order']['checkout']['customer_ip_address'] }}</a> </li>
-
-                            </ul>
-
-                        <div>
-                            @if($result['order']['checkout']['custom_field1']  != '' || $result['order']['checkout']['custom_field7'] != '' )
-                            Affiliate details:
-                                @if($result['order']['checkout']['custom_field7'] != '' && $result['order']['checkout']['custom_field1']  == '')
-                                    Network: {{ $result['order']['checkout']['custom_field7'] }} </br>
-                                @else
-                                        Network: {{ $result['order']['checkout']['custom_field7'] }} </br>
-                                        Campaign: {{ $result['order']['checkout']['custom_field2'] }} </br>
-                                        @if($result['order']['checkout']['custom_field1'] == 'oi')
-                                            Affiliate Id: <a href="https://account.linktrust.com/New/Reports/AffiliatePerformance?AffiliateId={{ $result['order']['checkout']['custom_field3'] }}" target="_blank"> {{ $result['order']['checkout']['custom_field3'] }} </a></br>
-                                        @else
-                                            Affiliate Id: {{ $result['order']['checkout']['custom_field3'] }} </br>
-                                        @endif
-                                    Click Id: {{ $result['order']['checkout']['custom_field4'] }}
-                                @endif
-
-                                @else
-                                    <p class="alert-danger"> Ultracart doesn't have any affiliate details for this order.</p>
-                                @endif
-                        </div>
                             <div>
                                 <form action="{{route('order-save')}}" method="POST">
                                     <div class="form-group">
