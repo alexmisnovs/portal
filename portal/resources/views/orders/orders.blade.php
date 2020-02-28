@@ -82,7 +82,6 @@
                                                             @elseif(strpos($result['order']['items'][0]['accounting_code'], 'PHEN') && strpos($result['order']['checkout']['custom_field7'], 'CPA'))
                                                                 Campaign: Phen375 CPA
 
-
                                                             @endif
 
                                                         @else
