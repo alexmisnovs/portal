@@ -123,6 +123,8 @@
                                                         <option>Completed</option>
                                                         <option>Reship</option>
                                                         <option>Refund</option>
+                                                        <option>On Hold</option>
+                                                        <option>BTP</option>
                                                         <option>Cancel</option>
                                                         <option>Partial Refund</option>
                                                         <option>Fraud</option>
