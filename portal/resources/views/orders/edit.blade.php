@@ -57,7 +57,7 @@
                                     <label for="action"> Status </label>
                                     <select class="form-control" name="action" id="action">
 
-                                        @foreach (['Reship', 'Refund', 'Cancel', 'Partial Refund', 'Completed'] as $value)
+                                        @foreach (['Reship', 'Refund', 'Cancel', 'Partial Refund', 'On Hold', 'BTP', 'Completed'] as $value)
                                             <option value="{{ $value }}"
                                                     @if ($value == $order->action)
                                                     selected="selected"
