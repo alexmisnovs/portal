@@ -53,7 +53,8 @@
                                                 <ul>
                                                     <li>Name: {{ $result['order']['shipping']['title'] }} {{ $result['order']['shipping']['first_name'] }} {{ $result['order']['shipping']['last_name'] }}</li>
                                                     <li>Email: {{ $result['order']['billing']['email'] }}</li>
-                                                    @if($result['order']['marketing']['advertising_source'] != '')
+                                                  
+                                                    @if($result['order']['marketing'])
                                                         <li> {{ $result['order']['marketing']['advertising_source'] }}</li>
                                                     @endif
                                                 </ul>
@@ -62,7 +63,10 @@
                                                     <li>Date Created:  {{ $result['order']['creation_dts'] }}</li>
                                                     <li>Product: {{ $result['order']['items'][0]['accounting_code'] }}</li>
                                                     <li>Total: {{ $result['order']['summary']['total']['value'] }}</li>
+                                                    @if($result['order']['fraud_score'])
+                                                      {{--@dd($result['order']['fraud_score'])--}}
                                                     <li>Fraud Score:  {{ $result['order']['fraud_score']['score'] }}</li>
+                                                    @endif
                                                     <li>Customer IP: <a href="https://www.ip2location.com/{{ $result['order']['checkout']['customer_ip_address'] }}" target="_blank">{{ $result['order']['checkout']['customer_ip_address'] }}</a> </li>
 
                                                 </ul>
